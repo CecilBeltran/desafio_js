@@ -38,15 +38,12 @@ function CalculoIndice (){
       }
       break
       default:
-        resultado= "No se ha podido calcular.No ha indicado h (hombre) o m (mujer)";
-    
-         
+        resultado= "No se ha podido calcular.No ha indicado h (hombre) o m (mujer)";       
   }
   return "Su indice es ;" + indice.toFixed(0) + "y su clasificación es :" + resultado ;
 }    
   
   function ResultadoIMC ( ){ 
-  
   let mensaje= "Usted mide  " + altura + " metros y pesa  " + peso + "Kg , su indice es de " + indice.toFixed(0) + " su clasificación es:  "+ resultado;
   alert (mensaje);
   }
@@ -55,8 +52,8 @@ function CalculoIndice (){
   var peso = parseInt (prompt("Ingrese su peso en Kg"));
   let indice = (peso / (altura * altura))
   let resultado =""; 
-  console.log (indice.toFixed(0));
   
+  console.log (indice.toFixed(0));
   CalculoIndice();
   console.log (resultado)
   ResultadoIMC();
