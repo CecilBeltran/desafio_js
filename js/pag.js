@@ -65,9 +65,9 @@ function CalculoIndice (){
   let mensaje= "Usted mide  " + altura + " metros y pesa  " + peso + "Kg , su indice es de " + indice.toFixed(0) + " su clasificación es:  "+ resultado;
   alert (mensaje);
   }
-  var sexo = prompt ("Indique su sexo, con la letra m si es mujer y con la letra h si es hombre.");
+  var sexo = prompt ("Indique su sexo, con la letra m si es mujer y con la letra h si es hombre.").toLowerCase();
   var altura =parseFloat (prompt("Indique su altura en m")) ;
-  var peso = parseInt (prompt("Ingrese su peso en Kg"));
+  var peso = parseInt (prompt("Ingrese su peso en Kg").isNaN());
   let indice = (peso / (altura * altura))
   let resultado =""; 
   
