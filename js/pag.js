@@ -1,4 +1,22 @@
 //CALCULADORA DE INDICE DE MASA CORPORAL
+class tabla { 
+  constructor (indice1, indice2, indice3,indice4,indice5) {
+  this.tabla1= indice1;
+  this.tabla2= indice2 ;
+  this.tabla3= indice3;
+  this.tabla4= indice4;
+  this.tabla5= indice5;
+}
+}
+const tablaIndice = new tabla ("Bajo peso","Peso Normal","Obesidad Leve","Obesidad severa","Obesidad muy severa",);
+console.log (tablaIndice);
+const tablaArray = ["Bajo peso","Peso Normal","Obesidad Leve","Obesidad severa"];
+console.log(tablaArray);
+tablaArray.push("Obesidad muy severa");
+console.log(tablaArray);
+console.log(tablaArray.includes("Bajo peso"));
+
+
 function CalculoIndice (){
   resultado= "";
   switch (sexo){
@@ -58,3 +76,6 @@ function CalculoIndice (){
   console.log (resultado)
   ResultadoIMC();
   
+  for (let index=0; index <4; index++){
+    alert ("Valor de tabla  " + tablaArray[index]);
+    }
