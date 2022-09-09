@@ -141,13 +141,6 @@ while(option !== 0) {
                 }
                 return "Su indice es ;" + indice.toFixed(0) + "y su clasificación es :" + resultado ;
               }   
-              function ResultadoIMC ( ){ 
-                let mensaje= "Usted mide  " + altura + " metros y pesa  " + peso + "Kg , su indice es de " + indice.toFixed(0) + " su clasificación es:  "+ resultado;
-                alert (mensaje);
-                }
-              
-                let resultado =""; 
-  
                 console.log (indice.toFixed(0));
                 CalculoIndice();
                 console.log (resultado)
@@ -174,12 +167,12 @@ function seleccionarActividad(activdadesSala) {
         };
 };     
 
-  
-
-  
-
-
-    
-    
-
-           
+function ResultadoIMC ( ){ 
+    mensaje= "Usted mide  " + altura + " metros y pesa  " + peso + "Kg , su indice es de " + indice.toFixed(0) + " su clasificación es:  "+ resultado;
+}
+// DESAFÍO COMPLEMENTARIO DOM
+const result = document.querySelector ("#result");
+const mostrarResult =document.createElement ("mostrar")
+ 
+mostrarResult.innerHTML = mensaje;
+result.append(mostrarResult);
