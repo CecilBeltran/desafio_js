@@ -2,6 +2,7 @@ let option;
 let resultado;
 let listaFuncional;
 let listaSala;
+let mensaje="";
 function entrenamientoFuncional (id,day,hour,reserved) {
     this.id= id;
     this.day= day;
@@ -140,7 +141,7 @@ while(option !== 0) {
                       resultado= "No se ha podido calcular.No ha indicado h (hombre) o m (mujer)";       
                 }
                 return "Su indice es ;" + indice.toFixed(0) + "y su clasificación es :" + resultado ;
-              }   
+              } 
                 console.log (indice.toFixed(0));
                 CalculoIndice();
                 console.log (resultado)
@@ -168,6 +169,7 @@ function seleccionarActividad(activdadesSala) {
 };     
 
 function ResultadoIMC ( ){ 
+ 
     mensaje= "Usted mide  " + altura + " metros y pesa  " + peso + "Kg , su indice es de " + indice.toFixed(0) + " su clasificación es:  "+ resultado;
 }
 // DESAFÍO COMPLEMENTARIO DOM
