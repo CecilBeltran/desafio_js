@@ -3,6 +3,8 @@ let resultado;
 let listaFuncional;
 let listaSala;
 let mensaje="";
+let verAgenda="";
+let agenda="";
 function entrenamientoFuncional (id,day,hour,reserved) {
     this.id= id;
     this.day= day;
@@ -46,43 +48,53 @@ while(option !== 0) {
             if (activdad === 1 && day ===1){
                 funcional1.reserved= true;
                 alert ("Usted tiene una reseva para Entrenamiento Funcional");
+                verAgenda=  "Entrenamiento Funcional  " + funcional1.day + " " + funcional1.hour;
                 console.log (funcional1);
             } else if (activdad ===1 && day ===2){
                funcional2.reserved= true;
                alert ("Usted tiene una reseva para Entrenamiento Funcional");
                 console.log (funcional2);
+                verAgenda=  "Entrenamiento Funcional  " + funcional2.day + " " +funcional2.hour;
             } else if (activdad ===1 && day ===3){
                funcional3.reserved= true;
                alert ("Usted tiene una reseva para Entrenamiento Funcional");
                 console.log (funcional3);
+                verAgenda=  "Entrenamiento Funcional  " + funcional3.day + " " +funcional3.hour;
             } else if (activdad ===1 && day ===4){
                funcional4.reserved= true;
                alert ("Usted tiene una reseva para Entrenamiento Funcional");
                console.log ( funcional4); 
+               verAgenda=  "Entrenamiento Funcional  " + funcional4.day + " " +funcional4.hour;
             } else if (activdad ===1 && day ===5){
                funcional5.reserved= true; 
                alert ("Usted tiene una reseva para Entrenamiento Funcional");
-               console.log (funcional5);    
+               console.log (funcional5);   
+               verAgenda=  "Entrenamiento Funcional  " + funcional5.day + " " +funcional5.hour;
             } else if (activdad === 2 && day ===1){
                 sala1.reserved= true; 
                 alert ("Usted tiene una reseva para Sala de Entrenamiento");
                 console.log (sala1);
+                verAgenda=  "Sala de  Entrenamiento   " + sala1.day + " " +sala1.hour;
             } else if (activdad ===2 && day ===2){
                 sala2.reserved= true;
                 alert ("Usted tiene una reseva para Sala de Entrenamiento");
                 console.log (sala2);
+                verAgenda=  "Sala de  Entrenamiento   " + sala2.day + " " +sala2.hour;
             } else if (activdad===2 && day ===3){
                 sala3.reserved= true;
                 alert ("Usted tiene una reseva para Sala de Entrenamiento");
                 console.log (sala3);
+                verAgenda=  "Sala de  Entrenamiento   " + sala3.day + " " +sala3.hour;
             } else if (activdad ===2 && day ===4){
                 sala4.reserved= true;
                 alert ("Usted tiene una reseva para Sala de Entrenamiento");
                 console.log (sala4); 
+                verAgenda=  "Sala de  Entrenamiento   " + sala4.day + " " +sala4.hour;
             } else if (activdad ===2 && day ===5){
                 sala5.reserved= true;
                 alert ("Usted tiene una reseva para Sala de Entrenamiento");
-                console.log (sala5);    
+                console.log (sala5);   
+                verAgenda=  "Sala de  Entrenamiento   " + sala5.day + " " +sala5.hour;
             } else {
                 alert("La opción ingresada no es correcta, intente nuevamente");
             } ;  
@@ -172,9 +184,23 @@ function ResultadoIMC ( ){
  
     mensaje= "Usted mide  " + altura + " metros y pesa  " + peso + "Kg , su indice es de " + indice.toFixed(0) + " su clasificación es:  "+ resultado;
 }
-// DESAFÍO COMPLEMENTARIO DOM
+
+
+
 const result = document.querySelector ("#result");
-const mostrarResult =document.createElement ("mostrar")
- 
-mostrarResult.innerHTML = mensaje;
-result.append(mostrarResult);
+const mostrarResult =document.createElement ("p");
+
+
+
+const boton= document.getElementById("boton");
+boton.addEventListener("click", () => mostrarResult.innerHTML = mensaje,
+result.append(mostrarResult));
+
+
+const verReserva = document.querySelector ("#verReserva");
+const mostrarAgenda =document.createElement ("p");
+
+
+const botonReserva= document.querySelector("#mostrarAgenda");
+botonReserva.addEventListener("click", () => mostrarAgenda.innerHTML = verAgenda,
+verReserva.append(mostrarAgenda));
