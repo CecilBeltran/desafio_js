@@ -5,12 +5,14 @@ let listaSala;
 let mensaje="";
 let verAgenda="";
 let agenda="";
-function entrenamientoFuncional (id,day,hour,reserved) {
+class entrenamientoFuncional {
+  constructor(id,day,hour,reserved) {
     this.id= id;
     this.day= day;
     this.hour= hour;
     this.reserved= reserved;
-};
+} };
+
 const funcional1= new entrenamientoFuncional (10, "Lunes","8:00", false);
 const funcional2= new entrenamientoFuncional (20, "Martes", "8:00", false);
 const funcional3= new entrenamientoFuncional (30, "Miércoles", "8:00", false);
@@ -18,7 +20,12 @@ const funcional4= new entrenamientoFuncional (30, "Jueves", "8:00", false);
 const funcional5= new entrenamientoFuncional (50, "Viernes","8:00", false);
 
 
-let actividadesFuncional=[ funcional1, funcional2, funcional3, funcional4, funcional5];
+let actividadesFuncional=[ ];
+actividadesFuncional.push(funcional1);
+actividadesFuncional.push(funcional2);
+actividadesFuncional.push(funcional3);
+actividadesFuncional.push(funcional4);
+actividadesFuncional.push (funcional5);
 
 function salaEntrenamiento (id,day,hour,reserved) {    
     this.id= id;
@@ -34,11 +41,18 @@ const sala4= new salaEntrenamiento (90, "Jueves","8:00", false);
 const sala5= new salaEntrenamiento (100, "Viernes","8:00", false);
 
 
-let activdadesSala =[sala1, sala2, sala3, sala4, sala5];
-let reserva= "";
+let activdadesSala =[];
+
+activdadesSala.push(sala1);
+activdadesSala.push(sala2);
+activdadesSala.push(sala3);
+activdadesSala.push(sala4);
+activdadesSala.push(sala5);
+
+
 
 while(option !== 0) {
-    option = Number(prompt("Ingrese una opción:\n1. Reservar una Actividad\n2. Ver mis reservas \n3. Calculr IMC \n0. Salir"));
+    option = Number(prompt("Ingrese una opción:\n1. Reservar una Actividad\n2. Ver mis reservas \n0. Salir"));
     
     switch (option) {
         case 1:
@@ -98,18 +112,35 @@ while(option !== 0) {
             } else {
                 alert("La opción ingresada no es correcta, intente nuevamente");
             } ;  
-            break;
+            break; 
         case 2:
              let agendaSala = activdadesSala.filter(listaSala => listaSala.reserved === true);
              console.log (agendaSala);
              let agendaFuncional = actividadesFuncional.filter (listaFuncional => listaFuncional.reserved === true);
             console.log (agendaFuncional);
             break;
-        case 3:
-            var sexo = prompt ("Indique su sexo, con la letra m si es mujer y con la letra h si es hombre.");
-            var altura =parseFloat (prompt("Indique su altura en m")) ;
-            var peso = parseInt (prompt("Ingrese su peso en Kg"));
-            var indice = (peso / (altura * altura));
+        case 0: 
+                alert("Gracias, nos vemos!!");
+            break;
+        default:
+                alert("La opción ingresa no es correcta, intente nuevamente");
+            break;
+    }
+};
+
+var sexo= document.getElementById("sexo");
+          sexo.addEventListener("click", ()=>{
+              console.log(sexo.value);
+          } );
+          var altura= document.getElementById("altura");
+          altura.addEventListener("click", ()=>{
+              console.log(altura.value);
+          } );
+          var peso= document.getElementById("peso");
+          peso.addEventListener("click", ()=>{
+              console.log(peso.value);
+          } );
+          var indice = (peso / (altura* altura));
             
             function CalculoIndice (){
                 resultado= "";
@@ -158,27 +189,23 @@ while(option !== 0) {
                 CalculoIndice();
                 console.log (resultado)
                 ResultadoIMC();
-            break;
-        case 0: 
-                alert("Gracias, nos vemos!!");
-            break;
-        default:
-                alert("La opción ingresa no es correcta, intente nuevamente");
-            break;
-    }
+
+function seleccionarActividad(agendaSala) {
+  listaSala = []
+  for (let agendaSala of agendaSala) {
+      listaSala.push(reserva)
+      };   
 };
-function seleccionarActividad(activdadesSala) {
-     listaSala = []
-    for (let activdadesSala of activdadesSala(true)) {
-        listaSala.push(reserva)
-        };
-};   
-    function seleccionarActividad2(actividadesFuncional) {
+
+function seleccionarActividad2(actividadesFuncional) {
     listaFuncional = []
-    for (let actividadesFuncional of actividadesFuncional(true)) {
-        listaFuncional.push(reserva)
-        };
+for (let actividadesFuncional of actividadesFuncional(true)) {
+    listaFuncional.push(reserva1)
+    };
 };     
+
+
+
 
 function ResultadoIMC ( ){ 
  
@@ -193,9 +220,8 @@ const mostrarResult =document.createElement ("p");
 
 
 const boton= document.getElementById("boton");
-boton.addEventListener("click", () => mostrarResult.innerHTML = mensaje,
+boton.addEventListener ("click", () => mostrarResult.innerHTML = `Usted mide  ${altura}  metros y pesa   ${peso}  Kg , su indice es de ${indice.toFixed(0)} su clasificación es:   ${resultado }` ,
 result.append(mostrarResult));
-
 
 const verReserva = document.querySelector ("#verReserva");
 const mostrarAgenda =document.createElement ("p");
@@ -204,3 +230,13 @@ const mostrarAgenda =document.createElement ("p");
 const botonReserva= document.querySelector("#mostrarAgenda");
 botonReserva.addEventListener("click", () => mostrarAgenda.innerHTML = verAgenda,
 verReserva.append(mostrarAgenda));
+
+function mostrarActividades(actividadesFuncional) {
+  const contenedorDeActividades = document.getElementById("contenedor");
+  actividadesFuncional.forEach (entrenamientoFuncional => {
+    const divActividad = document.createElement("div");
+    divActividad.classList.add ("actividad");
+    divActividad.innerHTML=  `  <input type="button"  value= "${entrenamientoFuncional.day}" Hora "${entrenamientoFuncional.hour}">`;
+  contenedorDeActividades.appendChild(divActividad);
+  })
+};
