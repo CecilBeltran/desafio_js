@@ -2,11 +2,14 @@ head {
     width: 1200px;
     height: 100%;
 }
+main {
+    position: relative;
+}
 .imagen-principal {
     background-attachment: fixed;
     width: 100%;
     background-image: url(../img/gym_4.jpg);
-    filter: opacity(90%);
+    filter: opacity(80%);
     position: absolute;
     box-sizing: content-box;
     max-width: 1200px;
@@ -19,4 +22,12 @@ head {
 }
 #mostrarAgenda {
     position: relative;
+}
+.actividad{
+    position:relative;
+}
+.img_calculadora{
+    display: flex;
+    justify-content: flex-end;
+    
 }
