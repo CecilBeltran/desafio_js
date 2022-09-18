@@ -6,7 +6,7 @@ function CalculoIndice (sexo,peso,altura){
     let indice = (peso / (altura* altura));
     resultado= "";
       switch (sexo){
-        case ("mujer" || "femenino"):
+        case "mujer" :
           if (indice < 20 ){
           resultado ="Bajo peso.";
           }
@@ -24,7 +24,7 @@ function CalculoIndice (sexo,peso,altura){
           }
           break;
                   
-        case ("hombre" || "masculino"):
+        case "hombre" :
           if(indice < 21 ){
             resultado="Bajo Peso.";
           }

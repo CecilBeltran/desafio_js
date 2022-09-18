@@ -93,17 +93,17 @@ mostrarActividadesSala(activdadesSala);
 const verReserva = document.querySelector ("#verReserva");
 const mostrarAgenda =document.createElement ("p");
 const botonReserva= document.querySelector("#mostrarAgenda");
-botonReserva.addEventListener("click", () => {mostrarAgenda.innerText =  `Usted se ha agendado para :${resultado}${resultado1}`   ,
+botonReserva.addEventListener("click", () => {mostrarAgenda.innerHTML =  resultado +resultado1,
 verReserva.append(mostrarAgenda) }); 
 
 console.log(mostrarAgenda);
 function agenda(result) {
-  resultado = + result  
+  resultado = "Se ha agendado para Entrenamiento  Funcional :"+ result  ;
   return resultado;
 };
 agenda(result);
 function agenda1(result1) {
-  resultado1 =  result1  
+  resultado1 = "Se agendado para sala de Entrenamiento :" + result1  ;
   return resultado1;
 }
 agenda1(result1);
