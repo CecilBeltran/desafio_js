@@ -1,6 +1,12 @@
 let option;
 let resultado;
 let mensaje="";
+let pesoEnStorage= localStorage.getItem("pesoEnStorage");
+let alturaEnStorage =localStorage.getItem("alturaEnStorage");
+let sexoEnStorage = localStorage.getItem("sexoEnStorage");
+
+
+
 
 function CalculoIndice (sexo,peso,altura){
     let indice = (peso / (altura* altura));
@@ -64,10 +70,14 @@ const boton= document.getElementById("boton");
   e.preventDefault()
   console.log(e);
   let sexo = e.target.form[0].value; 
+  localStorage.setItem ("sexoEnStorage", sexo);
   let altura = e.target.form[2].value;
+  localStorage.setItem("alturaEnStorage", altura);
   let peso = e.target.form[1].value;
+  localStorage.setItem("pesoEnStorage", peso);
   let res= CalculoIndice(sexo,peso,altura);
   result.innerHTML= res;
   console.log(res); 
+  console.log();
   }
 );       

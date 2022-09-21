@@ -1,9 +1,4 @@
-let option;
-let resultado;
-let resultado1;
-let listaFuncional;
-let listaSala;
-let mensaje="";
+
 
 
 class entrenamientoFuncional {
@@ -54,7 +49,7 @@ activdadesSala.push(sala5);
 
 //MOSTRAR LAS ACTIVIDADES DE ENTRENAMIENTO FUNCIONAL Y EVENTO BOTONES
 
-function mostrarActividades(actividadesFuncional) {
+function mostrarActividades(entrenamientoFuncional) {
   const contenedorDeActividades = document.getElementById("contenedor");
   actividadesFuncional.forEach(entrenamientoFuncional => {
   console.log(entrenamientoFuncional);
@@ -62,14 +57,14 @@ function mostrarActividades(actividadesFuncional) {
   divActividad.classList.add ("actividad");
   divActividad.innerHTML=  `  <p> ${entrenamientoFuncional.day} Hora ${entrenamientoFuncional.hour}</p>`;
   contenedorDeActividades.appendChild(divActividad);
-  const botonVerDetalle = crearBotonVerDetalle(actividadesFuncional)
+  const botonVerDetalle = crearBotonVerDetalle(entrenamientoFuncional)
   divActividad.appendChild(botonVerDetalle);
   contenedorDeActividades.appendChild(divActividad);
   }
   )
 };
 
-function mostrarDetalle(actividadesFuncional){
+function mostrarDetalle(entrenamientoFuncional){
   const contenedorDeActividadFuncional = document.getElementById("contenedor-funcional");
   contenedorDeActividadFuncional.innerHTML = `
     <h3>Entrenamiento Funcional</h3>
@@ -77,21 +72,21 @@ function mostrarDetalle(actividadesFuncional){
     <p>${entrenamientoFuncional.hour}</p> `;  
 }
 
-function crearBotonVerDetalle(actividadesFuncional){
+function crearBotonVerDetalle(entrenamientoFuncional){
   const button = document.createElement("button");
   button.innerText = "Reservar";
   button.addEventListener("click", () => {  button.innerHTML=`reservado`
-  mostrarDetalle(actividadesFuncional);
+  mostrarDetalle(entrenamientoFuncional);
   }
   )
   return button;
 }
 
 
-mostrarActividades(actividadesFuncional)
+mostrarActividades(entrenamientoFuncional)
 
 //MOSTRAR ACTIVIDADES DE SALA ENTRENAMIENTO Y EVENTO BOTONES
-function mostrarActividadesSala(activdadesSala) {
+function mostrarActividadesSala(salaEntrenamiento) {
   const contenedorDeActividades1 = document.getElementById("contenedor1");
   activdadesSala.forEach(salaEntrenamiento => {
   console.log(salaEntrenamiento);
@@ -99,30 +94,30 @@ function mostrarActividadesSala(activdadesSala) {
   divActividadSala.classList.add ("actividadSala");
   divActividadSala.innerHTML=  `  <p> ${salaEntrenamiento.day} Hora ${salaEntrenamiento.hour}</p>`;
   contenedorDeActividades1.appendChild(divActividadSala);
-  const botonVer = crearBotonVerSala(activdadesSala)
+  const botonVer = crearBotonVerSala(salaEntrenamiento)
   divActividadSala.appendChild(botonVer);
   contenedorDeActividades1.appendChild(divActividadSala);
   }
   )
 };
-function crearBotonVerSala(activdadesSala){
+function crearBotonVerSala(salaEntrenamiento){
   const button2 = document.createElement("button");
   button2.innerText = "Reservar";
   button2.addEventListener("click", () => {  button2.innerHTML=`reservado`
-    mostrarDetalleSala(activdadesSala);
+    mostrarDetalleSala(salaEntrenamiento);
     })
   return button2;
 }
-function mostrarDetalleSala(activdadesSala){
+function mostrarDetalleSala(salaEntrenamiento){
   const contenedorDeActividadSala = document.getElementById("contenedor-sala");
   contenedorDeActividadSala.innerHTML = `
     <h3>Sala Entrenamiento</h3>
     <p> ${salaEntrenamiento.day}</p>
     <p>${salaEntrenamiento.hour}</p> `;
     
-}
+}mostrarActividadesSala(salaEntrenamiento)
 
-mostrarActividadesSala(activdadesSala)
+
 
 
  
