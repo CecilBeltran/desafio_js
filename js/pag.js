@@ -1,5 +1,5 @@
-
-
+let arrayReserva= [];
+let arrayReservaSala=[];
 
 class entrenamientoFuncional {
   constructor(id,day,hour,reserved) {
@@ -48,31 +48,45 @@ activdadesSala.push(sala4);
 activdadesSala.push(sala5);
 
 //MOSTRAR LAS ACTIVIDADES DE ENTRENAMIENTO FUNCIONAL Y EVENTO BOTONES
-
+//IMPRIMIR CARTAS
 function mostrarActividades(entrenamientoFuncional) {
   const contenedorDeActividades = document.getElementById("contenedor");
+  
   actividadesFuncional.forEach(entrenamientoFuncional => {
   console.log(entrenamientoFuncional);
+  
   const divActividad = document.createElement("div");
   divActividad.classList.add ("actividad");
   divActividad.innerHTML=  `  <p> ${entrenamientoFuncional.day} Hora ${entrenamientoFuncional.hour}</p>`;
   contenedorDeActividades.appendChild(divActividad);
+  console.log(entrenamientoFuncional);
+  
   const botonVerDetalle = crearBotonVerDetalle(entrenamientoFuncional)
   divActividad.appendChild(botonVerDetalle);
   contenedorDeActividades.appendChild(divActividad);
-  }
-  )
+}
+)
 };
 
 function mostrarDetalle(entrenamientoFuncional){
+  arrayReserva.push(entrenamientoFuncional)
+  console.log(arrayReserva);
+  localStorage.setItem("reserva", JSON.stringify(entrenamientoFuncional));
+  entrenamientoFuncional.length >0 ? entrenamientoFuncional: entrenamientoFuncional = JSON.parse(localStorage.getItem("reserva"))
+  console.log(entrenamientoFuncional);
   const contenedorDeActividadFuncional = document.getElementById("contenedor-funcional");
-  contenedorDeActividadFuncional.innerHTML = `
-    <h3>Entrenamiento Funcional</h3>
-    <p> ${entrenamientoFuncional.day}</p>
-    <p>${entrenamientoFuncional.hour}</p> `;  
+  var item;
+  arrayReserva.map(entrenamientoFuncional=> item= `
+  <h3>Entrenamiento Funcional</h3>
+  <p> ${entrenamientoFuncional.day}</p>
+  <p>${entrenamientoFuncional.hour}</p> `)
+  console.log(item);
+  contenedorDeActividadFuncional.innerHTML = item ;
+  
 }
 
 function crearBotonVerDetalle(entrenamientoFuncional){
+  console.log(entrenamientoFuncional);
   const button = document.createElement("button");
   button.innerText = "Reservar";
   button.addEventListener("click", () => {  button.innerHTML=`reservado`
@@ -109,11 +123,20 @@ function crearBotonVerSala(salaEntrenamiento){
   return button2;
 }
 function mostrarDetalleSala(salaEntrenamiento){
+  arrayReservaSala.push(salaEntrenamiento)
+  console.log(arrayReservaSala);
+  localStorage.setItem("reservaSala", JSON.stringify(salaEntrenamiento));
+  salaEntrenamiento.length >0 ? salaEntrenamiento: salaEntrenamiento = JSON.parse(localStorage.getItem("reservaSala"))
   const contenedorDeActividadSala = document.getElementById("contenedor-sala");
-  contenedorDeActividadSala.innerHTML = `
-    <h3>Sala Entrenamiento</h3>
-    <p> ${salaEntrenamiento.day}</p>
-    <p>${salaEntrenamiento.hour}</p> `;
+  var item;
+  arrayReserva.map(salaEntrenamiento=> item= `
+  <h3>Entrenamiento Funcional</h3>
+  <p> ${salaEntrenamiento.day}</p>
+  <p>${salaEntrenamiento.hour}</p> `)
+  console.log(item);
+  contenedorDeActividadSala.innerHTML = item ;
+  
+
     
 }mostrarActividadesSala(salaEntrenamiento)
 
