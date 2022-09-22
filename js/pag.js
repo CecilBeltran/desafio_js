@@ -52,16 +52,11 @@ activdadesSala.push(sala5);
 //IMPRIMIR CARTAS
 function mostrarActividades(entrenamientoFuncional) {
   const contenedorDeActividades = document.getElementById("contenedor");
-
   actividadesFuncional.forEach(entrenamientoFuncional => {
-
-
     const divActividad = document.createElement("div");
     divActividad.classList.add("actividad");
     divActividad.innerHTML = `  <p> ${entrenamientoFuncional.day} Hora ${entrenamientoFuncional.hour}</p>`;
     contenedorDeActividades.appendChild(divActividad);
-    
-
     const botonVerDetalle = crearBotonVerDetalle(entrenamientoFuncional)
     divActividad.appendChild(botonVerDetalle);
     contenedorDeActividades.appendChild(divActividad);
@@ -70,12 +65,7 @@ function mostrarActividades(entrenamientoFuncional) {
 };
 
 function mostrarDetalle(arrayReserva) {
-
-
   arrayReserva ? arrayReserva : arrayReserva = JSON.parse(localStorage.getItem("reserva"))  ///// RECUPERO SI HAY COSAS GUARDADOS EN EL LOCALSTORAGE
-
-
-
   const contenedorDeActividadFuncional = document.getElementById("contenedor-funcional");
 
   console.log(arrayReserva);
@@ -85,22 +75,15 @@ function mostrarDetalle(arrayReserva) {
 
   arrayReserva.map(entrenamientoFuncional => [item += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
     `
-  
   <p> ${entrenamientoFuncional.day}</p>
   <p>${entrenamientoFuncional.hour}</p> `])
-
-
-
   contenedorDeActividadFuncional.innerHTML = "<h3>Entrenamiento Funcional</h3>" + item; ////// un solo titulo y sumado todos los deas
-
 }
 
 ////////////////////////////////////// ELIMINAR REPETIDOS
 function eliminarRepetidos(params) {
-
   const unicoFav = new Set(fav);
   clearFav = [...unicoFav]
-
   return fav
 }
 
@@ -112,12 +95,8 @@ let fav = JSON.parse(localStorage.getItem("reserva")) || [] /////// ME FIJO SI H
 let clearFav;
 ///////////////// GUARDADO LOCAL STORAGE
 function guardadoLocalStorage(entrenamientoFuncional) {
-
-
   fav.push(entrenamientoFuncional)///////// PUSHE LOS OBJETOS EN LA RESERVA EN UN ARRAY VACIO
   fav = eliminarRepetidos(fav)
-
-
   localStorage.setItem("reserva", JSON.stringify(fav));////// GUARDO EN EL LOCALSTORAGE
   return clearFav
 }
@@ -126,25 +105,13 @@ function guardadoLocalStorage(entrenamientoFuncional) {
 ////////////////////////////////////////
 
 
-
 function crearBotonVerDetalle(entrenamientoFuncional) {
-
-
   const button = document.createElement("button");
   button.innerText = "Reservar";
   button.addEventListener("click", () => {
-    button.innerHTML = `reservado`
-
-
-
-
-    arrayReserva = guardadoLocalStorage(entrenamientoFuncional)
-
-
-
-
-
-    mostrarDetalle(arrayReserva);
+  button.innerHTML = `reservado`
+  arrayReserva = guardadoLocalStorage(entrenamientoFuncional)
+  mostrarDetalle(arrayReserva);
   }
   )
   return button;
@@ -157,19 +124,13 @@ mostrarActividades(entrenamientoFuncional)
 
 // //MOSTRAR ACTIVIDADES DE SALA ENTRENAMIENTO Y EVENTO BOTONES
 
-
 function mostrarActividadesSala(salaEntrenamiento) {
   const contenedorDeActividadesSala = document.getElementById("contenedor1");
-
   activdadesSala.forEach(salaEntrenamiento => {
-
-
     const divActividadSala = document.createElement("div");
     divActividadSala.classList.add("actividadSala");
     divActividadSala.innerHTML = `  <p> ${salaEntrenamiento.day} Hora ${salaEntrenamiento.hour}</p>`;
     contenedorDeActividadesSala.appendChild(divActividadSala);
- 
-
     const botonVerDetalleSala = crearBotonVerDetalleSala(salaEntrenamiento)
     divActividadSala.appendChild(botonVerDetalleSala);
     contenedorDeActividadesSala.appendChild(divActividadSala);
@@ -179,36 +140,24 @@ function mostrarActividadesSala(salaEntrenamiento) {
 
 function mostrarDetalleSala(arrayReservaSala) {
 
-
   arrayReservaSala ? arrayReservaSala : arrayReservaSala = JSON.parse(localStorage.getItem("reservaSala"))  ///// RECUPERO SI HAY COSAS GUARDADOS EN EL LOCALSTORAGE
-
-
-
   const contenedorDeActividadesSala = document.getElementById("contenedor-sala");
 
   console.log(arrayReservaSala);
-
 
   var itemS = ``;
 
   arrayReservaSala.map(salaEntrenamiento => [itemS += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
     `
-  
   <p> ${salaEntrenamiento.day}</p>
   <p>${salaEntrenamiento.hour}</p> `])
-
-
-
   contenedorDeActividadesSala.innerHTML = "<h3>Sala de Entrenamiento</h3>" + itemS; ////// un solo titulo y sumado todos los deas
-
 }
 
 ////////////////////////////////////// ELIMINAR REPETIDOS 
 function eliminarRepetidosSala(params) {
-
   const unicoFavS = new Set(favS);
   clearFavS = [...unicoFavS]
-
   return favS
 }
 
@@ -220,12 +169,8 @@ let favS = JSON.parse(localStorage.getItem("reservaSala")) || [] /////// ME FIJO
 let clearFavS;
 ///////////////// GUARDADO LOCAL STORAGE
 function guardadoLocalStorageSala(salaEntrenamiento) {
-
-
   favS.push(salaEntrenamiento)///////// PUSHE LOS OBJETOS EN LA RESERVA EN UN ARRAY VACIO
   favS = eliminarRepetidosSala(favS)
-
-
   localStorage.setItem("reservaSala", JSON.stringify(favS));////// GUARDO EN EL LOCALSTORAGE
   return clearFavS
 }
@@ -236,17 +181,12 @@ function guardadoLocalStorageSala(salaEntrenamiento) {
 
 
 function crearBotonVerDetalleSala(salaEntrenamiento) {
-
-
   const button2 = document.createElement("button");
   button2.innerText = "Reservar";
   button2.addEventListener("click", () => {
-    button2.innerHTML = `reservado`
-
-
-    arrayReservaSala = guardadoLocalStorageSala(salaEntrenamiento)
-
-    mostrarDetalleSala(arrayReservaSala);
+  button2.innerHTML = `reservado`
+  arrayReservaSala = guardadoLocalStorageSala(salaEntrenamiento)
+  mostrarDetalleSala(arrayReservaSala);
   }
   )
   return button2;
