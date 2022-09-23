@@ -111,6 +111,13 @@ function crearBotonVerDetalle(entrenamientoFuncional) {
   button.addEventListener("click", () => {
   button.innerHTML = `reservado`
   arrayReserva = guardadoLocalStorage(entrenamientoFuncional)
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'SU RESERVA SE HA REALIZADO',
+    showConfirmButton: false,
+    timer: 1500
+  })
   mostrarDetalle(arrayReserva);
   }
   )
@@ -186,6 +193,13 @@ function crearBotonVerDetalleSala(salaEntrenamiento) {
   button2.addEventListener("click", () => {
   button2.innerHTML = `reservado`
   arrayReservaSala = guardadoLocalStorageSala(salaEntrenamiento)
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'SU RESERVA SE HA REALIZADO',
+    showConfirmButton: false,
+    timer: 1500
+  })
   mostrarDetalleSala(arrayReservaSala);
   }
   )

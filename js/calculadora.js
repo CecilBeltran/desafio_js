@@ -61,7 +61,22 @@ function ResultadoIMC (peso, altura, indice){
   return mensaje;
 };      
 
-
+let cartelSexo= document.getElementById("sexo");
+cartelSexo.addEventListener( "focus", () => {
+  Toastify({
+    text: "Ingrese si es hombre o mujer",
+    className: "info",
+    duration: 3000,
+    newWindow: true,
+    close: true,
+    gravity: "top", 
+    position: "left",
+    stopOnFocus: true, 
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
+    }
+  }).showToast();
+})
 const result = document.querySelector ("#result");
 const mostrarResult =document.createElement ("p");
                
