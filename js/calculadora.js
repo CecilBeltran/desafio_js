@@ -53,7 +53,7 @@ function CalculoIndice (sexo,peso,altura){
        return ResultadoIMC( peso, altura, indice);
 }
               
-console.log (resultado)
+//console.log (resultado)
 ResultadoIMC();
 
 function ResultadoIMC (peso, altura, indice){ 
@@ -95,4 +95,6 @@ const boton= document.getElementById("boton");
   console.log(res); 
   console.log();
   }
-);       
+); 
+
+
