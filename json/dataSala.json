@@ -1,0 +1,31 @@
+[{
+    "id": "160",
+    "day" :" lunes",
+    "hour" : "8:00",
+    "reserved" : "false"
+    },
+    {
+    "id": "170",
+    "day" :" Martes",
+    "our" : "8:00",
+    "reserved" : "false"
+    },
+    {
+    "id": "180",
+    "day" :" Miércoles",
+     "hour" : "8:00",
+    "reserved" : "false"
+    },
+    {
+    "id": "190",
+    "day" :" Jueves",
+    "hour" : "8:00",
+    "reserved" : "false"
+    },
+    {
+    "id": "200",
+    "day" :" Viernes",
+    "hour" : "8:00",
+    "reserved" : "false"
+    }
+    ]

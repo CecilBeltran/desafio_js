@@ -1,21 +1,24 @@
  /*NORMALIZE*/
- *{ 
-    margin: auto;
-    padding: 0;
-    box-sizing:border-box; 
-    max-width: 1200px;
-    max-height: 100%;
+
+    #pag-principal { 
+    background-image: url(../img/imgFondo.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    background-attachment: fixed;
     }
-    body { 
-    background-color:#e9ff70;
-    font-family: 'Roboto Flex', sans-serif; 
-    max-width: 100%; 
-    max-height: 100%;
-    margin: auto; 
-    padding: 0;;
+    body{
+    background-image: url(../img/img1.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    background-attachment: fixed;   
     }
     h1 {
-    font-weight: 800; 
+    color: #ff9500;
+    font-weight: 500; 
     font-size: 50px; 
     text-align: center;
     padding-right: 100px;
@@ -25,19 +28,19 @@
     }
     h2 { 
     padding-top: 50px;
-    color: black;
+    color: #ffea00;
     text-align: center;
     margin: 0px;
-    font-size:35px;
+    font-size:40px;
     font-weight: 600 px;
     margin-bottom: 50px; 
     }
     h3{
     padding-top: 50px;
-    color: black;
+    color:#3d348b;
     text-align: center;
     margin: 0px;
-    font-size:30px;
+    font-size:35px;
     font-weight: 600 px;
     margin-bottom: 50px; 
     }
@@ -63,7 +66,7 @@ head {
 .imagen_2{
     background-attachment: fixed;
     width: 100%;
-    background-image: url(../img/gym_3.webp);
+    /*background-image: url(../img/gym_3.webp);*/
     filter: opacity(80%);
     position: absolute;
     box-sizing: content-box;
@@ -80,16 +83,7 @@ head {
     max-width: 1200px;
     max-height: 800px; 
 }
-.imagen-principal {
-    background-attachment: fixed;
-    width: 100%;
-    background-image: url(../img/gym_4.jpg);
-    filter: opacity(80%);
-    position: absolute;
-    box-sizing: content-box;
-    max-width: 1200px;
-    max-height: 1000px; 
-}
+
 .calculadora {
     margin-top: 200px;
     position: relative;
@@ -105,16 +99,18 @@ h2{
 #contenedor{
      position: relative;
     font-size: 30px;
-    color:#1282a2 ;
+    color:#1b3b6f ;
     margin-left: 500px;
     height: 700px;
     
 }   
-
+button{
+    margin-left: 60px;
+}
 #contenedor1{
     position: relative;
     font-size: 30px;
-    color:#1282a2 ;
+    color:#1b3b6f ;
     margin-left: 500px;
     max-height: 1000px;
     
@@ -129,18 +125,33 @@ h2{
     display: flex;
     justify-content: flex-end;
     position: absolute;
-    margin-left: 500px;
-    margin-top: 85px;
+    margin-left: 650px;
+    margin-top: 70px;
+    width: 200px;
+    height: 130px;
+    filter: brightness(1.0);
+    mix-blend-mode: screen;
+}
+#logo {
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 350px;
+    height: 230px;
 }
 #logo_link{
+   max-width: 1500px;
+    box-sizing: border-box;
+    margin: 0;
     display: flex;
-    margin-right: 100px;
+    height: 300px;
 }
 .titulo_link{
     position:relative;
-    margin-left: 350px;
-    margin-top: 160px;
-    color: black;
+    margin-left: 550px;
+    margin-top: 200px;
+    color:#a8dadc;
 }
 
 #titulos{
@@ -148,12 +159,17 @@ h2{
     align-content: center;
 }
 #contenedor-funcional p{
-    margin-left: 550px;
-    font-size: 25px;
+    margin-left: 380px;
+    font-weight: 450;
+    font-size: 30px;
+    color: #0353a4;
 }
 #contenedor-sala p{
-    margin-left: 550px;
-    font-size: 25px;
+    margin-left: 380px;
+    font-weight: 450;
+    font-size: 30px;
+    color: #f7b801;
+   
 }
 .info{
     

@@ -1,13 +1,13 @@
 let arrayReserva = [];
 let arrayReservaSala = [];
 
-class entrenamientoFuncional {
-  constructor(id, day, hour, reserved) {
-    this.id = id;
-    this.day = day;
-    this.hour = hour;
-    this.reserved = reserved;
-  }
+
+function entrenamientoFuncional(id, day, hour, reserved) {
+  this.id = id;
+  this.day = day;
+  this.hour = hour;
+  this.reserved = reserved;
+ 
 };
 
 const funcional1 = new entrenamientoFuncional(10, "Lunes", "8:00", false);
@@ -48,16 +48,25 @@ activdadesSala.push(sala3);
 activdadesSala.push(sala4);
 activdadesSala.push(sala5);
 
+//TRAIGO LOS OBJETOS DESDE json
+let response =fetch ("./json/data.json")
+.then((response) => response.json())
+.then((json) => { datosParaImprimir = json
+
+mostrarActividades(datosParaImprimir ) }) 
+
+
+
 //MOSTRAR LAS ACTIVIDADES DE ENTRENAMIENTO FUNCIONAL Y EVENTO BOTONES
 //IMPRIMIR CARTAS
-function mostrarActividades(entrenamientoFuncional) {
+function mostrarActividades(datosParaImprimir) {
   const contenedorDeActividades = document.getElementById("contenedor");
-  actividadesFuncional.forEach(entrenamientoFuncional => {
+  datosParaImprimir.forEach(datosParaImprimir => {
     const divActividad = document.createElement("div");
     divActividad.classList.add("actividad");
-    divActividad.innerHTML = `  <p> ${entrenamientoFuncional.day} Hora ${entrenamientoFuncional.hour}</p>`;
+    divActividad.innerHTML = `  <p> ${datosParaImprimir.day} Hora ${datosParaImprimir.hour}</p>`;
     contenedorDeActividades.appendChild(divActividad);
-    const botonVerDetalle = crearBotonVerDetalle(entrenamientoFuncional)
+    const botonVerDetalle = crearBotonVerDetalle(datosParaImprimir)
     divActividad.appendChild(botonVerDetalle);
     contenedorDeActividades.appendChild(divActividad);
   }
@@ -68,16 +77,15 @@ function mostrarDetalle(arrayReserva) {
   arrayReserva ? arrayReserva : arrayReserva = JSON.parse(localStorage.getItem("reserva"))  ///// RECUPERO SI HAY COSAS GUARDADOS EN EL LOCALSTORAGE
   const contenedorDeActividadFuncional = document.getElementById("contenedor-funcional");
 
-  console.log(arrayReserva);
+  //console.log(arrayReserva);
 
 
   var item = ``;
 
-  arrayReserva.map(entrenamientoFuncional => [item += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
+  arrayReserva?.map(datosParaImprimir => [item += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
     `
-  <p> ${entrenamientoFuncional.day}</p>
-  <p>${entrenamientoFuncional.hour}</p> `])
-  contenedorDeActividadFuncional.innerHTML = "<h3>Entrenamiento Funcional</h3>" + item; ////// un solo titulo y sumado todos los deas
+  <p> EL DÍA ${datosParaImprimir.day} A LAS  ${datosParaImprimir.hour} HORAS</p> `])
+  contenedorDeActividadFuncional.innerHTML = "<h3>ENTRENAMIENTO FUNCIONAL</h3>" + item; ////// un solo titulo y sumado todos los deas
 }
 
 ////////////////////////////////////// ELIMINAR REPETIDOS
@@ -94,8 +102,8 @@ let fav = JSON.parse(localStorage.getItem("reserva")) || [] /////// ME FIJO SI H
 
 let clearFav;
 ///////////////// GUARDADO LOCAL STORAGE
-function guardadoLocalStorage(entrenamientoFuncional) {
-  fav.push(entrenamientoFuncional)///////// PUSHE LOS OBJETOS EN LA RESERVA EN UN ARRAY VACIO
+function guardadoLocalStorage(datosParaImprimir) {
+  fav.push(datosParaImprimir)///////// PUSHE LOS OBJETOS EN LA RESERVA EN UN ARRAY VACIO
   fav = eliminarRepetidos(fav)
   localStorage.setItem("reserva", JSON.stringify(fav));////// GUARDO EN EL LOCALSTORAGE
   return clearFav
@@ -105,12 +113,13 @@ function guardadoLocalStorage(entrenamientoFuncional) {
 ////////////////////////////////////////
 
 
-function crearBotonVerDetalle(entrenamientoFuncional) {
+function crearBotonVerDetalle(datosParaImprimir) {
   const button = document.createElement("button");
+  button.className="btn btn-primary";
   button.innerText = "Reservar";
   button.addEventListener("click", () => {
   button.innerHTML = `reservado`
-  arrayReserva = guardadoLocalStorage(entrenamientoFuncional)
+  arrayReserva = guardadoLocalStorage(datosParaImprimir)
   Swal.fire({
     position: 'top-end',
     icon: 'success',
@@ -124,21 +133,26 @@ function crearBotonVerDetalle(entrenamientoFuncional) {
   return button;
 }
 
-mostrarActividades(entrenamientoFuncional)
+mostrarActividades(datosParaImprimir)
 
 
+//TRAIGO LOS OBJETOS DE SALA DE ENTRENAMIENTO DESDE json
+let response1 = fetch ("./json/dataSala.json")
+.then((response1) => response1.json())
+.then((json) => { datosParaImprimirSala = json
 
+mostrarActividadesSala(datosParaImprimirSala ) }) 
 
 // //MOSTRAR ACTIVIDADES DE SALA ENTRENAMIENTO Y EVENTO BOTONES
 
-function mostrarActividadesSala(salaEntrenamiento) {
+function mostrarActividadesSala(datosParaImprimirSala) {
   const contenedorDeActividadesSala = document.getElementById("contenedor1");
-  activdadesSala.forEach(salaEntrenamiento => {
+  datosParaImprimirSala.forEach(datosParaImprimirSala => {
     const divActividadSala = document.createElement("div");
     divActividadSala.classList.add("actividadSala");
-    divActividadSala.innerHTML = `  <p> ${salaEntrenamiento.day} Hora ${salaEntrenamiento.hour}</p>`;
+    divActividadSala.innerHTML = `  <p> ${datosParaImprimirSala.day} Hora ${datosParaImprimirSala.hour}</p>`;
     contenedorDeActividadesSala.appendChild(divActividadSala);
-    const botonVerDetalleSala = crearBotonVerDetalleSala(salaEntrenamiento)
+    const botonVerDetalleSala = crearBotonVerDetalleSala(datosParaImprimirSala)
     divActividadSala.appendChild(botonVerDetalleSala);
     contenedorDeActividadesSala.appendChild(divActividadSala);
   }
@@ -154,11 +168,10 @@ function mostrarDetalleSala(arrayReservaSala) {
 
   var itemS = ``;
 
-  arrayReservaSala.map(salaEntrenamiento => [itemS += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
+  arrayReservaSala?.map(datosParaImprimirSala => [itemS += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
     `
-  <p> ${salaEntrenamiento.day}</p>
-  <p>${salaEntrenamiento.hour}</p> `])
-  contenedorDeActividadesSala.innerHTML = "<h3>Sala de Entrenamiento</h3>" + itemS; ////// un solo titulo y sumado todos los deas
+  <p> EL DÍA ${datosParaImprimirSala.day} A LAS ${datosParaImprimirSala.hour} HORAS </p> `])
+  contenedorDeActividadesSala.innerHTML = "<h3>SALA DE ENTRENAMIENTO</h3>" + itemS; ////// un solo titulo y sumado todos los deas
 }
 
 ////////////////////////////////////// ELIMINAR REPETIDOS 
@@ -175,8 +188,8 @@ let favS = JSON.parse(localStorage.getItem("reservaSala")) || [] /////// ME FIJO
 
 let clearFavS;
 ///////////////// GUARDADO LOCAL STORAGE
-function guardadoLocalStorageSala(salaEntrenamiento) {
-  favS.push(salaEntrenamiento)///////// PUSHE LOS OBJETOS EN LA RESERVA EN UN ARRAY VACIO
+function guardadoLocalStorageSala(datosParaImprimirSala) {
+  favS.push(datosParaImprimirSala)///////// PUSHE LOS OBJETOS EN LA RESERVA EN UN ARRAY VACIO
   favS = eliminarRepetidosSala(favS)
   localStorage.setItem("reservaSala", JSON.stringify(favS));////// GUARDO EN EL LOCALSTORAGE
   return clearFavS
@@ -187,12 +200,13 @@ function guardadoLocalStorageSala(salaEntrenamiento) {
 
 
 
-function crearBotonVerDetalleSala(salaEntrenamiento) {
+function crearBotonVerDetalleSala(datosParaImprimirSala) {
   const button2 = document.createElement("button");
+  button2.className="btn btn-warning";
   button2.innerText = "Reservar";
   button2.addEventListener("click", () => {
   button2.innerHTML = `reservado`
-  arrayReservaSala = guardadoLocalStorageSala(salaEntrenamiento)
+  arrayReservaSala = guardadoLocalStorageSala(datosParaImprimirSala)
   Swal.fire({
     position: 'top-end',
     icon: 'success',
@@ -207,10 +221,11 @@ function crearBotonVerDetalleSala(salaEntrenamiento) {
 }
 
 
-mostrarActividadesSala(salaEntrenamiento)
+mostrarActividadesSala(datosParaImprimirSala)
 
 mostrarDetalle(); 
 mostrarDetalleSala();
 
 
+  
 
