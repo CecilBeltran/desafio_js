@@ -1,60 +1,16 @@
 let arrayReserva = [];
 let arrayReservaSala = [];
+var item = ``;
+var itemS = ``;
+let clearFav;
+let clearFavS;
 
-
-function entrenamientoFuncional(id, day, hour, reserved) {
-  this.id = id;
-  this.day = day;
-  this.hour = hour;
-  this.reserved = reserved;
- 
-};
-
-const funcional1 = new entrenamientoFuncional(10, "Lunes", "8:00", false);
-const funcional2 = new entrenamientoFuncional(20, "Martes", "8:00", false);
-const funcional3 = new entrenamientoFuncional(30, "Miércoles", "8:00", false);
-const funcional4 = new entrenamientoFuncional(40, "Jueves", "8:00", false);
-const funcional5 = new entrenamientoFuncional(50, "Viernes", "8:00", false);
-
-
-let actividadesFuncional = [];
-actividadesFuncional.push(funcional1);
-actividadesFuncional.push(funcional2);
-actividadesFuncional.push(funcional3);
-actividadesFuncional.push(funcional4);
-actividadesFuncional.push(funcional5);
-
-
-
-function salaEntrenamiento(id, day, hour, reserved) {
-  this.id = id;
-  this.day = day;
-  this.hour = hour;
-  this.reserved = reserved;
-};
-
-const sala1 = new salaEntrenamiento(60, "Lunes", "8:00", false);
-const sala2 = new salaEntrenamiento(70, "Martes", "8:00", false);
-const sala3 = new salaEntrenamiento(80, "Miercoles", "8:00", false);
-const sala4 = new salaEntrenamiento(90, "Jueves", "8:00", false);
-const sala5 = new salaEntrenamiento(100, "Viernes", "8:00", false);
-
-
-let activdadesSala = [];
-
-activdadesSala.push(sala1);
-activdadesSala.push(sala2);
-activdadesSala.push(sala3);
-activdadesSala.push(sala4);
-activdadesSala.push(sala5);
-
-//TRAIGO LOS OBJETOS DESDE json
+//TRAIGO LOS OBJETOS (Entrenamiento Funcional) DESDE data.json
 let response =fetch ("./json/data.json")
 .then((response) => response.json())
 .then((json) => { datosParaImprimir = json
 
 mostrarActividades(datosParaImprimir ) }) 
-
 
 
 //MOSTRAR LAS ACTIVIDADES DE ENTRENAMIENTO FUNCIONAL Y EVENTO BOTONES
@@ -76,12 +32,7 @@ function mostrarActividades(datosParaImprimir) {
 function mostrarDetalle(arrayReserva) {
   arrayReserva ? arrayReserva : arrayReserva = JSON.parse(localStorage.getItem("reserva"))  ///// RECUPERO SI HAY COSAS GUARDADOS EN EL LOCALSTORAGE
   const contenedorDeActividadFuncional = document.getElementById("contenedor-funcional");
-
   //console.log(arrayReserva);
-
-
-  var item = ``;
-
   arrayReserva?.map(datosParaImprimir => [item += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
     `
   <p> EL DÍA ${datosParaImprimir.day} A LAS  ${datosParaImprimir.hour} HORAS</p> `])
@@ -100,7 +51,7 @@ function eliminarRepetidos(params) {
 
 let fav = JSON.parse(localStorage.getItem("reserva")) || [] /////// ME FIJO SI HAY ALGO GUARDADO, SINO LO CARGO COMO ARRAY VACIO
 
-let clearFav;
+
 ///////////////// GUARDADO LOCAL STORAGE
 function guardadoLocalStorage(datosParaImprimir) {
   fav.push(datosParaImprimir)///////// PUSHE LOS OBJETOS EN LA RESERVA EN UN ARRAY VACIO
@@ -133,10 +84,8 @@ function crearBotonVerDetalle(datosParaImprimir) {
   return button;
 }
 
-mostrarActividades(datosParaImprimir)
 
-
-//TRAIGO LOS OBJETOS DE SALA DE ENTRENAMIENTO DESDE json
+//TRAIGO LOS OBJETOS DE SALA DE ENTRENAMIENTO DESDE dataSala.json
 let response1 = fetch ("./json/dataSala.json")
 .then((response1) => response1.json())
 .then((json) => { datosParaImprimirSala = json
@@ -160,14 +109,9 @@ function mostrarActividadesSala(datosParaImprimirSala) {
 };
 
 function mostrarDetalleSala(arrayReservaSala) {
-
   arrayReservaSala ? arrayReservaSala : arrayReservaSala = JSON.parse(localStorage.getItem("reservaSala"))  ///// RECUPERO SI HAY COSAS GUARDADOS EN EL LOCALSTORAGE
   const contenedorDeActividadesSala = document.getElementById("contenedor-sala");
-
   console.log(arrayReservaSala);
-
-  var itemS = ``;
-
   arrayReservaSala?.map(datosParaImprimirSala => [itemS += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
     `
   <p> EL DÍA ${datosParaImprimirSala.day} A LAS ${datosParaImprimirSala.hour} HORAS </p> `])
@@ -186,7 +130,7 @@ function eliminarRepetidosSala(params) {
 
 let favS = JSON.parse(localStorage.getItem("reservaSala")) || [] /////// ME FIJO SI HAY ALGO GUARDADO, SINO LO CARGO COMO ARRAY VACIO
 
-let clearFavS;
+
 ///////////////// GUARDADO LOCAL STORAGE
 function guardadoLocalStorageSala(datosParaImprimirSala) {
   favS.push(datosParaImprimirSala)///////// PUSHE LOS OBJETOS EN LA RESERVA EN UN ARRAY VACIO
@@ -197,8 +141,6 @@ function guardadoLocalStorageSala(datosParaImprimirSala) {
 
 
 ////////////////////////////////////////7
-
-
 
 function crearBotonVerDetalleSala(datosParaImprimirSala) {
   const button2 = document.createElement("button");
@@ -219,9 +161,6 @@ function crearBotonVerDetalleSala(datosParaImprimirSala) {
   )
   return button2;
 }
-
-
-mostrarActividadesSala(datosParaImprimirSala)
 
 mostrarDetalle(); 
 mostrarDetalleSala();

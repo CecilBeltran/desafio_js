@@ -57,7 +57,7 @@ function CalculoIndice (sexo,peso,altura){
 ResultadoIMC();
 
 function ResultadoIMC (peso, altura, indice){ 
-  mensaje= "Usted mide  " + altura + " metros y pesa  " + peso + "Kg , su indice es de " + indice + " su clasificación es:  "+ resultado;
+  mensaje= "Usted mide  " + altura + " metros y pesa  " + peso + "Kg , su indice es de " + Math.trunc(indice) + " su clasificación es:  "+ resultado;
   return mensaje;
 };      
 
