@@ -7,13 +7,13 @@
     {
     "id": "170",
     "day" :" Martes",
-    "our" : "8:00",
+    "hour" : "8:00",
     "reserved" : "false"
     },
     {
     "id": "180",
     "day" :" Miércoles",
-     "hour" : "8:00",
+    "hour" : "8:00",
     "reserved" : "false"
     },
     {

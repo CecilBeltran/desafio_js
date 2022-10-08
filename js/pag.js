@@ -31,8 +31,9 @@ function mostrarActividades(datosParaImprimir) {
 
 function mostrarDetalle(arrayReserva) {
   arrayReserva ? arrayReserva : arrayReserva = JSON.parse(localStorage.getItem("reserva"))  ///// RECUPERO SI HAY COSAS GUARDADOS EN EL LOCALSTORAGE
+  eliminarRepetidos(arrayReserva);
   const contenedorDeActividadFuncional = document.getElementById("contenedor-funcional");
-  //console.log(arrayReserva);
+  console.log(arrayReserva);
   arrayReserva?.map(datosParaImprimir => [item += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
     `
   <p> EL DÍA ${datosParaImprimir.day} A LAS  ${datosParaImprimir.hour} HORAS</p> `])
@@ -40,12 +41,13 @@ function mostrarDetalle(arrayReserva) {
 }
 
 ////////////////////////////////////// ELIMINAR REPETIDOS
-function eliminarRepetidos(params) {
-  const unicoFav = new Set(fav);
-  clearFav = [...unicoFav]
-  return fav
-}
-
+function eliminarRepetidos(fav) {
+  
+  clearFav = [...new Set(fav)]
+  console.log(clearFav);
+  return clearFav
+  
+  }
 /////////////////////////////////////
 
 
@@ -55,9 +57,11 @@ let fav = JSON.parse(localStorage.getItem("reserva")) || [] /////// ME FIJO SI H
 ///////////////// GUARDADO LOCAL STORAGE
 function guardadoLocalStorage(datosParaImprimir) {
   fav.push(datosParaImprimir)///////// PUSHE LOS OBJETOS EN LA RESERVA EN UN ARRAY VACIO
+ console.log(fav);
   fav = eliminarRepetidos(fav)
+  console.log(fav);
   localStorage.setItem("reserva", JSON.stringify(fav));////// GUARDO EN EL LOCALSTORAGE
-  return clearFav
+  return fav
 }
 
 
@@ -119,7 +123,7 @@ function mostrarDetalleSala(arrayReservaSala) {
 }
 
 ////////////////////////////////////// ELIMINAR REPETIDOS 
-function eliminarRepetidosSala(params) {
+function eliminarRepetidosSala() {
   const unicoFavS = new Set(favS);
   clearFavS = [...unicoFavS]
   return favS
