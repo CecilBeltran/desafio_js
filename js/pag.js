@@ -36,7 +36,7 @@ function mostrarDetalle(arrayReserva) {
   console.log(arrayReserva);
   arrayReserva?.map(datosParaImprimir => [item += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
     `
-  <p id="detalle"> EL DÍA ${datosParaImprimir.day} A LAS  ${datosParaImprimir.hour} HORAS   </p> ` + ` <button id="boton-borrarActividad"> CANCELAR RESERVA</button> `
+  <p id="detalle"> EL DÍA ${datosParaImprimir.day} A LAS  ${datosParaImprimir.hour} HORAS   </p> ` + ` <button class= "btn btn-outline-danger" id="boton-borrarActividad"> CANCELAR RESERVA</button> `
    ])
   contenedorDeActividadFuncional.innerHTML = "<h3>ENTRENAMIENTO FUNCIONAL</h3>" + item ;  ////// un solo titulo y sumado todos los deas
   let botonBorrarFuncional = crearBotonEliminar(arrayReserva)
@@ -155,7 +155,7 @@ function mostrarDetalleSala(arrayReservaSala) {
   console.log(arrayReservaSala);
   arrayReservaSala?.map(datosParaImprimirSala => [itemS += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
     `
-  <p> EL DÍA ${datosParaImprimirSala.day} A LAS ${datosParaImprimirSala.hour} HORAS </p> `+ ` <button id="boton-borrarSala"> CANCELAR RESERVA</button> `])
+  <p> EL DÍA ${datosParaImprimirSala.day} A LAS ${datosParaImprimirSala.hour} HORAS </p> `+ ` <button class= "btn btn-outline-danger" id="boton-borrarSala"> CANCELAR RESERVA</button> `])
   contenedorDeActividadesSala.innerHTML = "<h3>SALA DE ENTRENAMIENTO</h3>" + itemS; ////// un solo titulo y sumado todos los deas
   let botonBorrarSala = crearBotonEliminarSala(arrayReservaSala)
   contenedorDeActividadesSala.appendChild(botonBorrarSala);

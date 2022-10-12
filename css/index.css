@@ -187,3 +187,9 @@ button{
 .info{  
     font-size: 30px;
 }
+#boton-borrarActividad{
+    margin-left: 500px;
+}
+#boton-borrarSala{
+    margin-left: 500px;
+}
