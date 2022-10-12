@@ -1,21 +1,5 @@
  /*NORMALIZE*/
 
-#pag-principal { 
-    background-image: url(../img/imgFondo.jpg);
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 0;
-    background-attachment: fixed;
-}
-body{
-    background-image: url(../img/img1.jpg);
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 0;
-    background-attachment: fixed;   
-}
 h1 {
     color: #ff9500;
     font-weight: 500; 
@@ -34,6 +18,7 @@ h2 {
     font-size:40px;
     font-weight: 600 px;
     margin-bottom: 50px; 
+    position: relative;
 }
 h3{
     padding-top: 50px;
@@ -71,11 +56,21 @@ head {
     max-width: 1200px;
     max-height: 1000px; 
 }
+/*CALCULADORA*/
+body{
+    background-image: url(../img/img1.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    background-attachment: fixed;   
+}
+
 .imagen-calculadora{
     background-attachment: fixed;
     width: 100%;
     background-image: url(../img/img1.jpg);
-    filter: opacity(50%);
+    filter: opacity(40%);
     position: absolute;
     box-sizing: content-box;
     max-width: 1200px;
@@ -83,14 +78,52 @@ head {
 }
 
 .calculadora {
-    margin-top: 50px;
+    margin-top: 20px;
     position: relative;
     font-size: 20px;
 }
-h2{
-    position:relative;
-    
+.img_calculadora{
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    margin-left: 650px;
+    margin-top: 70px;
+    width: 200px;
+    height: 130px;
+    filter: brightness(1.0);
+    mix-blend-mode: screen;
 }
+
+.titulo_link{
+    position:relative;
+    margin-left: 550px;
+    margin-top: 200px;
+    color:#a8dadc;
+}
+#result{
+    font-size: 50px;
+    font-weight: 500;
+    margin-left: 70px;
+    color: #3d348b;
+}
+.tituloCalc{
+    font-size: 50px;
+    color: #0353a4;
+}
+#tituloForm{
+    color: rgba(73, 8, 8, 0.984);
+}
+
+/*RESERVAS DE ACTIVIDADES*/
+#pag-principal { 
+    background-image: url(../img/imgFondo.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    background-attachment: fixed;
+}
+
 #reservas{
     margin-top: 200px;
 }
@@ -118,17 +151,7 @@ button{
 .actividad{
     position:relative;
 }
-.img_calculadora{
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    margin-left: 650px;
-    margin-top: 70px;
-    width: 200px;
-    height: 130px;
-    filter: brightness(1.0);
-    mix-blend-mode: screen;
-}
+
 #logo {
     filter: brightness(1.1);
     mix-blend-mode: multiply;
@@ -143,12 +166,6 @@ button{
     margin: 0;
     display: flex;
     height: 300px;
-}
-.titulo_link{
-    position:relative;
-    margin-left: 550px;
-    margin-top: 200px;
-    color:#a8dadc;
 }
 
 #titulos{
@@ -165,19 +182,8 @@ button{
     margin-left: 380px;
     font-weight: 450;
     font-size: 30px;
-    color: #f7b801;
-   
+    color: #f7b801;   
 }
 .info{  
     font-size: 30px;
-}
-#result{
-    font-size: 50px;
-    font-weight: 500;
-    margin-left: 70px;
-    color: #3d348b;
-}
-.tituloCalc{
-    font-size: 50px;
-    color: #0353a4;
 }

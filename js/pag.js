@@ -36,8 +36,8 @@ function mostrarDetalle(arrayReserva) {
   console.log(arrayReserva);
   arrayReserva?.map(datosParaImprimir => [item += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
     `
-  <p id="detalle"> EL DÍA ${datosParaImprimir.day} A LAS  ${datosParaImprimir.hour} HORAS </p> 
-  `+  `<button id="boton-borrarActividad">ELIMINAR RESERVA</button> ` ])
+  <p id="detalle"> EL DÍA ${datosParaImprimir.day} A LAS  ${datosParaImprimir.hour} HORAS   </p> ` + ` <button id="boton-borrarActividad"> CANCELAR RESERVA</button> `
+   ])
   contenedorDeActividadFuncional.innerHTML = "<h3>ENTRENAMIENTO FUNCIONAL</h3>" + item ;  ////// un solo titulo y sumado todos los deas
   let botonBorrarFuncional = crearBotonEliminar(arrayReserva)
   contenedorDeActividadFuncional.appendChild(botonBorrarFuncional);
@@ -65,6 +65,7 @@ function guardadoLocalStorage(datosParaImprimir) {
 }
 
 
+
 function crearBotonVerDetalle(datosParaImprimir) {
   const button = document.createElement("button");
   button.className="btn btn-primary";
@@ -85,30 +86,46 @@ function crearBotonVerDetalle(datosParaImprimir) {
   return button;
 }
 
+
+
 ///CREO FUNCIÓN PARA ELIMINAR LA ACTIVIDAD
-function crearBotonEliminar(arrayReserva){
-  //let botonBorrar =document.createElement("button")
-  //botonBorrar= document.getElementById("boton-borrarActividad");
- // botonBorrar.innerText="ELIMINAR ACTIVIDAD"
+function crearBotonEliminar(fav){
   let botonBorrar= document.getElementById("boton-borrarActividad")
- botonBorrar.addEventListener("click", () => {
-    eliminarFuncional(datosParaImprimir);
+  botonBorrar.addEventListener("click", () => {
+    let id = datosParaImprimir.id;
+    eliminarFuncional(id);
     contenedorDeActividadFuncional="";
-    console.log("PRUEBA");
-  mostrarDetalle(arrayReserva)
-    })
-    return botonBorrar;
+    Swal.fire({
+      position: 'top-end',
+      icon: 'warning',
+      title: 'SU RESERVA SE HA CANCELADO',
+      showConfirmButton: false,
+      timer: 1500
+    }) 
+    mostrarDetalle()
+  })
+  return botonBorrar;
 }
+
 ////////////////////////////////////////
+ 
 
 
 ///ELIMINAR RESERVA DEL LOCALSTORAGE
-function eliminarFuncional(fav) {
-  localStorage.removeItem("reserva")
-  return fav
- 
-}
+function eliminarFuncional(id){
+  let guardar = JSON.parse(localStorage.getItem("reserva"))
+  let carritoIndexInArray = guardar.find(e => e.id === id)
+  guardar.splice(carritoIndexInArray,1)
+  let arrayReserva = JSON.stringify(guardar);
+  localStorage.setItem("reserva", arrayReserva)
+ }
+
+
+
+
 //TRAIGO LOS OBJETOS DE SALA DE ENTRENAMIENTO DESDE dataSala.json
+
+
 let response1 = fetch ("./json/dataSala.json")
 .then((response1) => response1.json())
 .then((json) => { datosParaImprimirSala = json
@@ -138,8 +155,11 @@ function mostrarDetalleSala(arrayReservaSala) {
   console.log(arrayReservaSala);
   arrayReservaSala?.map(datosParaImprimirSala => [itemS += /////////////// SUMO TODOS LOS ITEMS ITERADOS 
     `
-  <p> EL DÍA ${datosParaImprimirSala.day} A LAS ${datosParaImprimirSala.hour} HORAS </p> `])
+  <p> EL DÍA ${datosParaImprimirSala.day} A LAS ${datosParaImprimirSala.hour} HORAS </p> `+ ` <button id="boton-borrarSala"> CANCELAR RESERVA</button> `])
   contenedorDeActividadesSala.innerHTML = "<h3>SALA DE ENTRENAMIENTO</h3>" + itemS; ////// un solo titulo y sumado todos los deas
+  let botonBorrarSala = crearBotonEliminarSala(arrayReservaSala)
+  contenedorDeActividadesSala.appendChild(botonBorrarSala);
+
 }
 
 ////////////////////////////////////// ELIMINAR REPETIDOS 
@@ -185,6 +205,37 @@ function crearBotonVerDetalleSala(datosParaImprimirSala) {
   )
   return button2;
 }
+///CREO FUNCIÓN PARA ELIMINAR LA ACTIVIDAD EN SALA DE ENTRENAMIENTO
+function crearBotonEliminarSala(favS){
+  let botonBorrarSala= document.getElementById("boton-borrarSala")
+  botonBorrarSala.addEventListener("click", () => {
+    let id = datosParaImprimirSala.id;
+    eliminarSala(id);
+    contenedorDeActividadesSala="";
+    Swal.fire({
+      position: 'top-end',
+      icon: 'warning',
+      title: 'SU RESERVA SE HA CANCELADO',
+      showConfirmButton: false,
+      timer: 1500
+    }) 
+    mostrarDetalleSala()
+    })
+    return botonBorrarSala;
+   
+}
+////////////////////////////////////////
+ 
+///ELIMINAR RESERVA SALA DEL LOCALSTORAGE
+function eliminarSala(id){
+  let guardarSala = JSON.parse(localStorage.getItem("reservaSala"))
+  let SalaIndexInArray = guardarSala.find(e => e.id === id)
+  guardarSala.splice(SalaIndexInArray,1)
+  let arrayReservaSala = JSON.stringify(guardarSala);
+  localStorage.setItem("reservaSala", arrayReservaSala)
+ }
+
+
 
 mostrarDetalle(); 
 mostrarDetalleSala();
