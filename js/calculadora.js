@@ -77,6 +77,8 @@ cartelSexo.addEventListener( "focus", () => {
     }
   }).showToast();
 })
+
+
 const result = document.querySelector ("#result");
 const mostrarResult =document.createElement ("p");
                
